@@ -6,7 +6,19 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'learn-phoneme',
+    loadChildren: () => import('../learn-phoneme/learn-phoneme.module').then( m => m.LearnPhonemePageModule)
+  },
+  {
+    path: 'play-games',
+    loadChildren: () => import('../play-games/play-games.module').then( m => m.PlayGamesPageModule)
+  },
+  {
+    path: 'practice-phoneme',
+    loadChildren: () => import('../practice-phoneme/practice-phoneme.module').then( m => m.PracticePhonemePageModule)
+  },
 ];
 
 @NgModule({
