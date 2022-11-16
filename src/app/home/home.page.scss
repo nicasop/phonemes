@@ -44,11 +44,27 @@ ion-row {
 }
 
 .img{
+  background-image: url("/assets/images/libros.png");
+  width:90%;
+  height:40%;
+  background-size: cover;
+  background-color: #61ea78;
+  box-shadow: 0px 0px 4px #ccc;
+  border-radius: 8px;
+
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 1px 10px #222;
+    transition: all 0.5s ease;
+  }
+}
+
+.img1{
   background-image: url("/assets/images/juego.png");
   width:90%;
   height:40%;
   background-size: cover;
-  background-color: #aaaaaa;
+  background-color: #61ea78;
   box-shadow: 0px 0px 4px #ccc;
   border-radius: 8px;
 

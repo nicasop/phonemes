@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('../play-games/play-games.module').then( m => m.PlayGamesPageModule)
   },
   {
-    path: 'practice-phoneme',
+    path: 'practice-phoneme/:pos',
     loadChildren: () => import('../practice-phoneme/practice-phoneme.module').then( m => m.PracticePhonemePageModule)
   },
 ];

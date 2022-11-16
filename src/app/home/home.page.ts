@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +8,22 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 export class HomePage {
 
   @ViewChild("aprender") aprender:ElementRef;
-  @ViewChild("juegos") juegos:ElementRef; 
+  @ViewChild("juegos") juegos:ElementRef;
+  temp1:any;
+  temp2:any;
 
   constructor(private render:Renderer2) {}
-  
-  ngOnInit(){
-    setInterval(()=> this.addMoment(this.aprender,"temblor"), 5000);
-    setInterval(()=> this.addMoment(this.juegos,"temblor"), 5000);
-}
 
-  // ngAfterContentInit(){
-  //     setInterval(()=> this.addMoment(this.aprender,"temblor"), 5000);
-  //     setInterval(()=> this.addMoment(this.juegos,"temblor"), 5000);
-  // }
+  ionViewWillEnter(){
+    this.temp1 = setInterval(()=> this.addMoment(this.aprender,"temblor"), 5000);
+    this.temp2 = setInterval(()=> this.addMoment(this.juegos,"temblor"), 5000);
+  }
+
+  ionViewWillLeave(){
+    clearInterval(this.temp1);
+    clearInterval(this.temp2);
+    
+  }
 
   aprenderF(){
     console.log("aprender");
