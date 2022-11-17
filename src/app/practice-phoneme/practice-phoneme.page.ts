@@ -1,5 +1,6 @@
 import { Component, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Data } from "./../../interfaces";
 
 @Component({
@@ -72,7 +73,7 @@ export class PracticePhonemePage{
   temp:any;
   imagen:string;
 
-  constructor(private render: Renderer2, private route: ActivatedRoute, private router: Router) {
+  constructor(private render: Renderer2, private route: ActivatedRoute, private router: Router, private toastController: ToastController) {
   }
 
   ionViewWillEnter(){
@@ -83,6 +84,11 @@ export class PracticePhonemePage{
 
   ionViewWillLeave(){
     clearInterval(this.temp);
+  }
+
+  ionViewDidLeave(){
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 
   initValues(){
@@ -110,6 +116,7 @@ export class PracticePhonemePage{
       let text = this.render.createText(word[i]);
       this.render.appendChild(div, text);
       this.render.addClass(div,"option");
+      this.render.addClass(div,"fuente");
 
       this.render.listen(div,"click", (event) => {
         this.obtenerValor(event)
@@ -137,13 +144,13 @@ export class PracticePhonemePage{
 
   verificarRespuesta(){
     if(this.data[this.pos_ejercicio].word == this.respuesta){
-      console.log("Correcto");
+      this.presentToast("ÉXITO","checkmark-circle-sharp");
       setTimeout(()=>{
         this.router.navigateByUrl('/home/learn-phoneme');
       }, 500);
     }
     else{
-      console.log("error");
+      this.presentToast("ERROR","alert-circle-sharp")
       this.respuesta="";
       this.num_click = this.data[this.pos_ejercicio].word.split('-').length;
     }
@@ -151,6 +158,17 @@ export class PracticePhonemePage{
 
   reproducirPalabra(){
     this.audio.play();
+  }
+
+  async presentToast(message: string, icon:string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'bottom',
+      icon: icon
+    });
+
+    await toast.present();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild,ElementRef,Renderer2 } from '@angular/core';
-
+import { ToastController } from '@ionic/angular';
 import { Data } from "./../../interfaces";
 
 @Component({
@@ -76,7 +76,7 @@ export class PlayGamesPage{
   audio: any = new Audio();
 
 
-  constructor(private render: Renderer2) { }
+  constructor(private render: Renderer2, private toastController: ToastController) { }
 
   ionViewWillEnter(){
     this.initValues()
@@ -93,7 +93,10 @@ export class PlayGamesPage{
     clearInterval(this.temp);
   }
 
-
+  ionViewDidLeave(){
+    this.audio.pause();
+    this.audio.currentTime = 0;
+  }
 
   addMoment(element:ElementRef,styleClass:string){
     this.render.addClass(element.nativeElement,styleClass);
@@ -106,18 +109,18 @@ export class PlayGamesPage{
     this.selected_word = element.srcElement.textContent;
     setTimeout(()=>{
       this.verificarRespuesta(element.srcElement.textContent);
-    }, 100);
+    }, 200);
   }
 
   verificarRespuesta(res_elegida:string){
     if(res_elegida == this.respuesta){
-      console.log("Correcto");
+      this.presentToast("ÉXITO","checkmark-circle-sharp")
       setTimeout(()=>{
         this.initValues();
       }, 500);
     }
     else{
-      console.log("error");
+      this.presentToast("ERROR","alert-circle-sharp")
       this.selected_word="";
     }
   }
@@ -145,6 +148,17 @@ export class PlayGamesPage{
 
   reproducirPalabra(){
     this.audio.play();
+  }
+
+  async presentToast(message: string, icon:string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'bottom',
+      icon: icon
+    });
+
+    await toast.present();
   }
 
 }

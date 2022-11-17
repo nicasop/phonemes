@@ -1,20 +1,22 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title align="center">PRÁCTICA</ion-title>
+    <ion-title class="titulo fuente">PRÁCTICA</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img alt="Silhouette of mountains" src= {{imagen}} />
-    <ion-card-content class="container-game">
-      {{respuesta}}
-    </ion-card-content>
-    <ion-card-content>
-      <div #opciones class="options"></div>
-    </ion-card-content>
-  </ion-card>
+  <div class="container fondo">
+    <ion-card class="card fondo">
+      <img alt="Silhouette of mountains" src= {{imagen}} />
+      <ion-card-content class="container-game fuente fondo_opc">
+        {{respuesta}}
+      </ion-card-content>
+      <ion-card-content>
+        <div #opciones class="options"></div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

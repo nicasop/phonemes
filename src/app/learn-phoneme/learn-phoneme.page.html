@@ -1,24 +1,20 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title align="center">APRENDE</ion-title>
+    <ion-title class="titulo fuente">APRENDE</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="container">
-    <ion-card>
+  <div class="container fondo">
+    <ion-card class="card fondo">
       <img alt="Silhouette of mountains" src= {{imagen}} />
-      <ion-card-content class="phoneme">
+      <ion-card-content class="phoneme fuente">
         {{palabra}}
       </ion-card-content>
     </ion-card>
-    <!-- <audio controls>
-      <source src= {{audio}} type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio> -->
   </div>
 
 </ion-content>

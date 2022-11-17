@@ -81,6 +81,11 @@ export class LearnPhonemePage{
     clearInterval(this.temp);
   }
 
+  ionViewDidLeave(){
+    this.audio.pause();
+    this.audio.currentTime = 0;
+  }
+  
   cargarInformacion(){
     this.pos_ele = Math.floor(Math.random() * this.data.length);
     this.palabra = this.data[this.pos_ele].word;

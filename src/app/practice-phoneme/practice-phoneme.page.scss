@@ -1,5 +1,12 @@
+.container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+}
+
 .container-game{
-    background-color: #aaa;
     margin: 20px 40px;
     text-align: center;
     font-size: 1.8rem;

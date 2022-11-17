@@ -21,8 +21,7 @@ export class HomePage {
 
   ionViewWillLeave(){
     clearInterval(this.temp1);
-    clearInterval(this.temp2);
-    
+    clearInterval(this.temp2); 
   }
 
   aprenderF(){

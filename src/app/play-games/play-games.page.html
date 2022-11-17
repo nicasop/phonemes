@@ -1,22 +1,24 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title align="center">JUEGA</ion-title>
+    <ion-title class="titulo fuente" >JUEGA</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img alt="Silhouette of mountains" src={{image}}/>
-    <ion-card-content class="container-game">
-      {{ selected_word }}
-    </ion-card-content>
-    <ion-card-content>
-      <div #opc1 class="izquierda" (click)="setValue($event)"></div>
-      <div #opc2 class="derecha"  (click)="setValue($event)"></div>
-      <div #opc3 class="izquierda"  (click)="setValue($event)"></div>
-    </ion-card-content>
-  </ion-card>
+  <div class="container fondo">
+    <ion-card class="card fondo">
+      <img alt="Silhouette of mountains" src={{image}}/>
+      <ion-card-content class="container-game fuente fondo_opc">
+        {{ selected_word }}
+      </ion-card-content>
+      <ion-card-content>
+        <div #opc1 class="izquierda fuente" (click)="setValue($event)"></div>
+        <div #opc2 class="derecha fuente"  (click)="setValue($event)"></div>
+        <div #opc3 class="izquierda fuente"  (click)="setValue($event)"></div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
